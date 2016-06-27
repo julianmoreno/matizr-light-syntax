@@ -2,7 +2,7 @@
   "name": "matizr-light-syntax",
   "theme": "syntax",
   "version": "0.2.0",
-  "description": "A light syntax theme for Ato",
+  "description": "A light syntax theme for Atom",
   "keywords": [
     "syntax",
     "theme"
