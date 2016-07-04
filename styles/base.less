@@ -84,6 +84,18 @@ atom-text-editor .search-results .marker.current-result .region,
   &.other.unit {
     color: @orange;
   }
+
+  &.scss {
+    color: @red-sass;
+
+    &.media ~ .property-name {
+      color: @red-sass;
+    }
+
+    &.other.unit {
+      color: @blue-sass;
+    }
+  }
 }
 
 .storage {
@@ -108,6 +120,10 @@ atom-text-editor .search-results .marker.current-result .region,
   &.other.symbol {
     color: @green;
   }
+
+  &.scss {
+    color: @blue-sass;
+  }
 }
 
 .variable {
@@ -119,6 +135,10 @@ atom-text-editor .search-results .marker.current-result .region,
 
   &.parameter.function {
     color: @syntax-text-color;
+  }
+
+  &.scss {
+    color: lighten(@blue-sass, 20%);
   }
 }
 
@@ -177,6 +197,13 @@ atom-text-editor .search-results .marker.current-result .region,
     color: darken(@red, 10%);
   }
 
+  &.html {
+
+  }
+
+  &.scss {
+    color:@red-sass;
+  }
 }
 
 .support {
@@ -216,6 +243,16 @@ atom-text-editor .search-results .marker.current-result .region,
   &.name.tag {
     color: @red;
     text-decoration: underline;
+
+    &.html {
+      //color:@blue-html;
+      text-decoration: none;
+    }
+
+    &.scss {
+      color:@red-sass;
+      text-decoration: none;
+    }
   }
 
   &.other.attribute-name {
@@ -223,6 +260,10 @@ atom-text-editor .search-results .marker.current-result .region,
 
     &.id {
       color: @blue;
+    }
+
+    &.css {
+      color:@pink-sass;
     }
   }
 }
@@ -304,4 +345,216 @@ atom-text-editor .search-results .marker.current-result .region,
 atom-text-editor[mini] .scroll-view,
 :host([mini]) .scroll-view {
   padding-left: 1px;
+}
+
+//html
+
+@color-attribute-html: @orange-html;
+@color-attribute-id-html: @red-html;
+@color-string-html: @cyan-html;
+@color-script-html: darken(@red-html, 10%);
+@color-element-structure-html: darken(@blue-html, 10%);
+@color-element-block-html: @blue-html;
+@color-element-inline-html: lighten(@blue-html, 15%);
+@color-empty-html: lighten(@blue-html, 30%);
+@color-element-other-html: darken(@orange-html, 15%);
+
+
+.html {
+  .sgml {
+
+    &.meta {
+      color: @color-element-structure-html;
+
+      .punctuation {
+        color: @color-element-structure-html;
+      }
+    }
+  }
+  .comment {
+    color:lighten(@blue-html, 45%);
+
+    .punctuation {
+        color:lighten(@blue-html, 40%);
+    }
+  }
+
+  .punctuation {
+    color: @color-script-html;
+
+    &.separator {
+      color:@color-attribute-html;
+    }
+
+    &.string {
+      color: @color-string-html;
+    }
+  }
+  .name {
+    color: @color-script-html;
+
+    &.script {
+      color: @color-script-html;
+    }
+  }
+
+  .entity.other.attribute-name {
+    color: @color-attribute-html;
+
+    &.id {
+      color: @color-attribute-id-html;
+
+      + .punctuation.separator {
+        color: @color-attribute-id-html;
+      }
+    }
+  }
+
+  .source {
+    color: @color-attribute-html;
+  }
+
+  &.string {
+    color: @color-string-html;
+  }
+
+  .meta {
+    color: @orange-html;
+
+    .id {
+      .toc-list {
+        color: @color-string-html;
+      }
+    }
+
+    .punctuation {
+      color: @color-empty-html;
+
+      .meta {
+        color: @color-empty-html;
+      }
+
+      &.separator {
+        color:@color-attribute-html;
+      }
+
+      &.string {
+        color: @color-string-html;
+      }
+    }
+    .name {
+      color: @color-empty-html;
+    }
+
+    &.structure {
+      .punctuation {
+        color: @color-element-structure-html;
+
+        &.separator {
+          color:@color-attribute-html;
+        }
+
+        &.string {
+          color: @color-string-html;
+        }
+      }
+      .name {
+        color: @color-element-structure-html;
+      }
+    }
+
+    &.block {
+      .punctuation {
+        color: @color-element-block-html;
+
+        &.separator {
+          color:@color-attribute-html;
+        }
+
+        &.string {
+          color: @color-string-html;
+        }
+      }
+      .name {
+        color: @color-element-block-html;
+      }
+    }
+
+    &.inline {
+      .punctuation {
+        color: @color-element-inline-html;
+
+        &.separator {
+          color:@color-attribute-html;
+        }
+
+        &.string {
+          color: @color-string-html;
+        }
+      }
+      .name {
+        color: @color-element-inline-html;
+      }
+    }
+
+    &.other {
+      .punctuation {
+        color: @color-element-other-html;
+
+        &.separator {
+          color:@color-attribute-html;
+        }
+
+        &.string {
+          color: @color-string-html;
+        }
+      }
+      .name {
+        color: @color-element-other-html;
+      }
+    }
+  }
+}
+
+
+.pane[data-active-item-name$='.html'] {
+  atom-text-editor, :host {
+    background-color: lighten(@blue-html, 53%);
+    color: darken(@blue-html, 30%);
+  }
+
+  .gutter {
+    background-color: lighten(@blue-html, 53%);
+  }
+}
+
+
+.pane[data-active-item-name$='.scss'], .pane[data-active-item-name$='.sass'] {
+  atom-text-editor, :host {
+    background-color: lighten(@pink-sass, 39%);
+  }
+}
+
+.property-name {
+  &.scss {
+    color:@dark-blue-sass;
+  }
+}
+
+.property-value {
+  &.scss {
+    color:@blue-sass;
+
+    .numeric {
+      color:@blue-sass;
+    }
+
+    .unit {
+      color:@blue-sass;
+    }
+  }
+}
+
+.source.scss {
+  color: @red-sass;
 }
